@@ -1,0 +1,35 @@
+# Compiler files
+cache/
+out/
+
+# Coverage reports
+lcov.info
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/31337/
+/broadcast/**/dry-run/
+
+# Ignore the directory's contents, not the directory itself, so the
+# negation below can re-include the settings file.
+.molcajete/*
+!.molcajete/settings.json
+
+# Docs
+docs/
+
+# Dotenv file
+.env
+
+# Claude
+plans/
+
+.claude/scheduled_tasks.lock
+.claude/settings.local.json
+.claude/.cc-writes/
+
+# macOS
+.DS_Store
+
+# Local temporal files
+tmp/

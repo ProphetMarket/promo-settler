@@ -1,0 +1,12 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+# Coverage measures production code only. Deploy scripts and tests are the
+# instruments doing the measuring, so their own line coverage says nothing
+# about whether src/ is exercised.
+no_match_coverage = "(script|test)/"
+
+optimizer = true
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
