@@ -9,4 +9,25 @@ no_match_coverage = "(script|test)/"
 
 optimizer = true
 
+# The server's meta project compiles with 0.8.24, and every source here pins
+# `pragma solidity 0.8.24;`, so the meta project can import the settler.
+solc_version = "0.8.24"
+
+# The settler imports only the exchange's Order struct and enums from ctf-exchange.
+remappings = ["exchange/=lib/ctf-exchange/src/exchange/"]
+
+# Foundry blocks file access by default. The tests read the vendored
+# ProphetCTFExchange bytecode and the real Gnosis Conditional Tokens bytecode
+# through deployCode.
+fs_permissions = [
+    { access = "read", path = "./test/artifacts" },
+    { access = "read", path = "./lib/ctf-exchange/artifacts" },
+    # script/DeployLocal.s.sol writes promoSettler into the harness addresses file: the meta
+    # project's ./addresses.json seen from contracts/lib/promo-settler, or the CI volume.
+    { access = "read-write", path = "../../addresses.json" },
+    { access = "read-write", path = "/anvil-state/" },
+    # The local-deploy test writes its scratch addresses file under the git-ignored ./tmp/.
+    { access = "read-write", path = "./tmp/" },
+]
+
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
