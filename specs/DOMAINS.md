@@ -7,4 +7,4 @@
 | ID | Domain | Description |
 |----|--------|-------------|
 | @settlement | Credit and Trade Settlement | Paying the promotional USDC credit and forwarding the trade to ProphetCTFExchange in one transaction, so a credit is paid exactly once and only when its trade settles |
-| @admin | Operational Controls | Pausing the settler and withdrawing its funds to a named address |
+| @admin | Operational Controls | Managing the settler's roles, its credit maximum, its pause and token recovery, and deploying the settler |
